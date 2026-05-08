@@ -112,6 +112,7 @@ const projects = [
       'Desenvolvi a interface e as páginas de informação do laboratório, garantindo navegação clara e responsiva.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: createProjectImage('AgriRS-Lab'),
+    repoLink: 'https://github.com/felipefmac/agrirs-lab',
   },
   {
     title: 'ABP FATEC 2 – Conecta Fatec Jacareí',
@@ -121,6 +122,7 @@ const projects = [
       'Criei fluxos de usuário e componentes interativos, conectando as funcionalidades do sistema acadêmico.',
     tags: ['JavaScript', 'TypeScript', 'React'],
     image: createProjectImage('Conecta Fatec'),
+    repoLink: 'https://github.com/felipefmac/conecta-fatec',
   },
   {
     title: 'TCC ETEC – PetNexus',
@@ -130,6 +132,7 @@ const projects = [
       'Implementei formulários de registro e dashboard de controle, com foco na experiência do cliente e organização de dados.',
     tags: ['JavaScript', 'PHP', 'SCSS'],
     image: createProjectImage('PetNexus'),
+    repoLink: 'https://github.com/felipefmac/petnexus',
   },
   {
     title: 'Portfólio ETEC',
@@ -139,6 +142,7 @@ const projects = [
       'Projetei uma estrutura visual limpa e organizei projetos para destacar as entregas do período.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: createProjectImage('Portfólio ETEC 1'),
+    repoLink: 'https://github.com/felipefmac/portfolio-etec',
   },
 ]
 
@@ -167,31 +171,37 @@ const certifications = [
 
 const interests = [
   {
+    icon: '🎵',
     title: 'Música',
     description: 'Gosto de ouvir músicas de diversos gêneros.',
     tags: ['Sertanejo', 'Pagode', 'Reggae'],
   },
   {
+    icon: '🎮',
     title: 'Games',
     description: 'Gosto de jogar (Prefiro RPG).',
     tags: ['RPG', 'Corrida', 'Estratégia'],
   },
   {
+    icon: '📚',
     title: 'Leitura',
     description: 'Gosto de ler.',
     tags: ['Ficção', 'Aventura', 'Históricos'],
   },
   {
+    icon: '🎬',
     title: 'Filmes',
     description: 'Gosto de assistir filmes.',
     tags: ['Sci-Fi', 'Viagem no Tempo', 'Espacial'],
   },
   {
+    icon: '✈️',
     title: 'Viajar',
     description: 'Gosto de viajar.',
     tags: ['Explorar', 'Cultura', 'Paisagens'],
   },
   {
+    icon: '⚽',
     title: 'Esportes',
     description: 'Gosto de acompanhar esportes.',
     tags: ['Futebol', 'Futebol Americano', 'Basquete'],
@@ -215,8 +225,6 @@ const contactLinks = [
     icon: <MdEmail aria-hidden="true" />,
   },
 ]
-
-const defaultRepoLink = 'https://github.com/404NotFound-ABP/AgriRSLAB_Portal'
 
 function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
@@ -318,7 +326,9 @@ function App() {
           <div className="professional-card">
             <div className="profile-summary">
               <div className="profile-thumb">
-                <div className="thumb-image" />
+                <div className="thumb-image">
+                  <img src={profilePhoto} alt="Foto de Felipe" />
+                </div>
               </div>
               <div>
                 <h3>Desenvolvedor</h3>
@@ -405,7 +415,10 @@ function App() {
           <div className="interests-grid">
             {interests.map((interest) => (
               <article key={interest.title} className="interest-card">
-                <h3>{interest.title}</h3>
+                <h3>
+                  <span className="interest-icon">{interest.icon}</span>
+                  {interest.title}
+                </h3>
                 <p>{interest.description}</p>
                 <div className="tag-list">
                   {interest.tags.map((tag) => (
@@ -482,7 +495,7 @@ function App() {
               </div>
               <a
                 className="modal-repo-link"
-                href={defaultRepoLink}
+                href={activeProject.repoLink}
                 target="_blank"
                 rel="noreferrer"
               >
