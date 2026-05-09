@@ -17,7 +17,7 @@ import {
   SiHackthebox,
 } from 'react-icons/si'
 
-const profilePhoto = new URL('../docs/foto.jpg', import.meta.url).href
+const profilePhoto = new URL('./assets/foto.jpg', import.meta.url).href
 
 const navLinks = [
   { label: 'Início', href: '#inicio' },
@@ -112,7 +112,7 @@ const projects = [
     contribution:
       'Desenvolvi a interface e as páginas do laboratório, garantindo navegação clara e responsiva, também desenvolvi as rotas, controles e sistema de tradução.',
     tags: ['HTML', 'CSS', 'JavaScript'],
-    image: new URL('../docs/agriRSLab.png', import.meta.url).href,
+    image: new URL('./assets/agriRSLab.png', import.meta.url).href,
     repoLink: 'https://github.com/404NotFound-ABP/AgriRSLAB_Portal',
   },
   {
@@ -123,7 +123,7 @@ const projects = [
     contribution:
       'Estou exercendo o papel de Scrum Master. Desenvolvendo a documentação e planejamento da equipe de desenvolvimento do sistema acadêmico.',
     tags: ['JavaScript', 'TypeScript', 'React'],
-    image: new URL('../docs/faqtec.png', import.meta.url).href,
+    image: new URL('./assets/faqtec.png', import.meta.url).href,
     repoLink: 'https://github.com/404NotFound-ABP/Autoatendimento_Academico',
   },
   {
@@ -145,7 +145,7 @@ const projects = [
     contribution:
       'Projetei uma estrutura visual limpa e organizei projetos para destacar as entregas do período.',
     tags: ['HTML', 'CSS', 'JavaScript'],
-    image: new URL('../docs/portfolio_etec.png', import.meta.url).href,
+    image: new URL('./assets/portfolio_etec.png', import.meta.url).href,
     repoLink: 'https://sites.google.com/view/joopedroluvisariseveriano1/p%C3%A1gina-inicial?authuser=1',
   },
 ]
@@ -158,25 +158,25 @@ const certifications = [
     title: 'Começando com o Cisco Packet Tracer',
     issuer: 'Cisco Networking Academy',
     year: '2025',
-    pdf: new URL('../docs/Começando com o Cisco Packet Tracer.pdf', import.meta.url).href,
+    pdf: new URL('./assets/Começando com o Cisco Packet Tracer.pdf', import.meta.url).href,
   },
   {
     title: 'Linux Unhatched',
     issuer: 'Cisco Networking Academy',
     year: '2025',
-    pdf: new URL('../docs/Linux Unhatched.pdf', import.meta.url).href,
+    pdf: new URL('./assets/Linux Unhatched.pdf', import.meta.url).href,
   },
   {
     title: 'Gerenciamento de Ameaças Cibernéticas',
     issuer: 'Cisco Networking Academy',
     year: '2025',
-    pdf: new URL('../docs/Gerenciamento de ameaças cibernéticas.pdf', import.meta.url).href,
+    pdf: new URL('./assets/Gerenciamento de ameaças cibernéticas.pdf', import.meta.url).href,
   },
   {
     title: 'Introdução à Cibersegurança',
     issuer: 'Cisco Networking Academy',
     year: '2025',
-    pdf: new URL('../docs/Introdução à Cibersegurança.pdf', import.meta.url).href,
+    pdf: new URL('./assets/Introdução à Cibersegurança.pdf', import.meta.url).href,
   },
 ]
 
