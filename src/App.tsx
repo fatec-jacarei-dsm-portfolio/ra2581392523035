@@ -106,26 +106,29 @@ const createProjectImage = (title: string) =>
 const projects = [
   {
     title: 'ABP FATEC 1 – AgriRS-Lab',
+    category: 'academic',
     description:
       'Projeto desenvolvido no 1º semestre do curso de Desenvolvimento de Software Multiplataforma. Site para o laboratório de sensoriamento remoto agrícola do INPE.',
     contribution:
-      'Desenvolvi a interface e as páginas de informação do laboratório, garantindo navegação clara e responsiva.',
+      'Desenvolvi a interface e as páginas do laboratório, garantindo navegação clara e responsiva, também desenvolvi as rotas, controles e sistema de tradução.',
     tags: ['HTML', 'CSS', 'JavaScript'],
-    image: createProjectImage('AgriRS-Lab'),
-    repoLink: 'https://github.com/felipefmac/agrirs-lab',
+    image: new URL('../docs/agriRSLab.png', import.meta.url).href,
+    repoLink: 'https://github.com/404NotFound-ABP/AgriRSLAB_Portal',
   },
   {
-    title: 'ABP FATEC 2 – Conecta Fatec Jacareí',
+    title: 'ABP FATEC 2 – FAQtec',
+    category: 'academic',
     description:
-      'Projeto integrador do 2º período focado na criação de soluções tecnológicas para a secretaria da Fatec Jacareí.',
+      'Projeto integrador do 2º período focado na criação de um chat-bot para a secretaria da Fatec Jacareí.',
     contribution:
-      'Criei fluxos de usuário e componentes interativos, conectando as funcionalidades do sistema acadêmico.',
+      'Estou exercendo o papel de Scrum Master. Desenvolvendo a documentação e planejamento da equipe de desenvolvimento do sistema acadêmico.',
     tags: ['JavaScript', 'TypeScript', 'React'],
-    image: createProjectImage('Conecta Fatec'),
-    repoLink: 'https://github.com/felipefmac/conecta-fatec',
+    image: new URL('../docs/faqtec.png', import.meta.url).href,
+    repoLink: 'https://github.com/404NotFound-ABP/Autoatendimento_Academico',
   },
   {
     title: 'TCC ETEC – PetNexus',
+    category: 'personal',
     description:
       'Sistema web para gestão de pet shop e clínica veterinária com agendamento, controle de estoque e relatórios.',
     contribution:
@@ -136,36 +139,44 @@ const projects = [
   },
   {
     title: 'Portfólio ETEC',
+    category: 'personal',
     description:
       'Portfólio desenvolvido durante o curso Técnico em Desenvolvimento de Sistemas na ETEC São José dos Campos.',
     contribution:
       'Projetei uma estrutura visual limpa e organizei projetos para destacar as entregas do período.',
     tags: ['HTML', 'CSS', 'JavaScript'],
-    image: createProjectImage('Portfólio ETEC 1'),
-    repoLink: 'https://github.com/felipefmac/portfolio-etec',
+    image: new URL('../docs/portfolio_etec.png', import.meta.url).href,
+    repoLink: 'https://sites.google.com/view/joopedroluvisariseveriano1/p%C3%A1gina-inicial?authuser=1',
   },
 ]
 
+const academicProjects = projects.filter((project) => project.category === 'academic')
+const personalProjects = projects.filter((project) => project.category === 'personal')
+
 const certifications = [
   {
-    title: 'Getting Started with Cisco Packet Tracer',
+    title: 'Começando com o Cisco Packet Tracer',
     issuer: 'Cisco Networking Academy',
-    year: '2024',
+    year: '2025',
+    pdf: new URL('../docs/Começando com o Cisco Packet Tracer.pdf', import.meta.url).href,
   },
   {
     title: 'Linux Unhatched',
     issuer: 'Cisco Networking Academy',
-    year: '2024',
+    year: '2025',
+    pdf: new URL('../docs/Linux Unhatched.pdf', import.meta.url).href,
   },
   {
     title: 'Gerenciamento de Ameaças Cibernéticas',
     issuer: 'Cisco Networking Academy',
-    year: '2024',
+    year: '2025',
+    pdf: new URL('../docs/Gerenciamento de ameaças cibernéticas.pdf', import.meta.url).href,
   },
   {
     title: 'Introdução à Cibersegurança',
     issuer: 'Cisco Networking Academy',
-    year: '2024',
+    year: '2025',
+    pdf: new URL('../docs/Introdução à Cibersegurança.pdf', import.meta.url).href,
   },
 ]
 
@@ -369,24 +380,49 @@ function App() {
             <span>Projetos</span>
             <h2>Projetos acadêmicos e pessoais desenvolvidos</h2>
           </div>
-          <div className="project-grid">
-            {projects.map((project) => (
-              <article key={project.title} className="project-card">
-                <div className="project-card-icon">⌨️</div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="tag-list">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="project-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <button className="project-link" type="button" onClick={() => setActiveProject(project)}>
-                  Ver Detalhes
-                </button>
-              </article>
-            ))}
+
+          <div className="projects-category">
+            <h3 className="project-category-heading">Acadêmicos</h3>
+            <div className="project-grid">
+              {academicProjects.map((project) => (
+                <article key={project.title} className="project-card">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className="tag-list">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <button className="project-link" type="button" onClick={() => setActiveProject(project)}>
+                    Ver Detalhes
+                  </button>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="projects-category">
+            <h3 className="project-category-heading">Pessoais</h3>
+            <div className="project-grid">
+              {personalProjects.map((project) => (
+                <article key={project.title} className="project-card">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className="tag-list">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <button className="project-link" type="button" onClick={() => setActiveProject(project)}>
+                    Ver Detalhes
+                  </button>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -398,10 +434,17 @@ function App() {
           <div className="certificates-grid">
             {certifications.map((certificate) => (
               <article key={certificate.title} className="certificate-card">
-                <div className="certificate-image" />
                 <h3>{certificate.title}</h3>
                 <p>{certificate.issuer}</p>
                 <span>{certificate.year}</span>
+                <a
+                  className="certificate-link"
+                  href={certificate.pdf}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ver certificado em PDF
+                </a>
               </article>
             ))}
           </div>
