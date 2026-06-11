@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { FaCode, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
 import {
   SiReact,
   SiTypescript,
@@ -16,6 +15,7 @@ import {
   SiTrello,
   SiHackthebox,
 } from 'react-icons/si'
+import { projectsMedia, CustomProjectMedia } from './projectsData'
 
 const profilePhoto = new URL('./assets/foto.jpg', import.meta.url).href
 
@@ -230,20 +230,38 @@ const contactLinks = [
     url: 'https://www.linkedin.com/in/felipefariamachado',
     icon: <FaLinkedin aria-hidden="true" />,
   },
-  {
-    label: 'Email',
-    url: 'mailto:felipe1708001@gmail.com',
-    icon: <MdEmail aria-hidden="true" />,
-  },
 ]
 
 function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
-  const [activeProject, setActiveProject] = useState<(typeof projects)[number] | null>(null)
+  const [activeProject, setActiveProject] = useState<ActiveProjectType | null>(null)
+  const [githubProjects, setGithubProjects] = useState<GithubProject[]>([])
+  const [isLoadingGithub, setIsLoadingGithub] = useState(true)
 
   useEffect(() => {
     document.body.classList.toggle('light-mode', theme === 'light')
   }, [theme])
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/felipefmac/repos?sort=updated&per_page=6')
+      .then(res => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const mergedProjects = data.map((repo: GithubRepo) => ({
+            ...repo,
+            media: projectsMedia[repo.name] || {
+              image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
+              videoUrl: ""
+            }
+          }));
+          setGithubProjects(mergedProjects);
+        } else {
+          console.warn("Aviso: Limite da API do GitHub excedido ou sem projetos.", data);
+        }
+      })
+      .catch(err => console.error("Erro ao buscar repositórios:", err))
+      .finally(() => setIsLoadingGithub(false));
+  }, []);
 
   return (
     <div className={`app-shell ${theme}`}>
@@ -385,9 +403,16 @@ function App() {
             <h3 className="project-category-heading">Acadêmicos</h3>
             <div className="project-grid">
               {academicProjects.map((project) => (
-                <article key={project.title} className="project-card">
+                <article key={project.title} className="project-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ height: '160px', overflow: 'hidden', marginBottom: '1rem', borderRadius: '4px', flexShrink: 0 }}>
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  </div>
                   <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <p style={{ flex: 1 }}>{project.description}</p>
                   <div className="tag-list">
                     {project.tags.map((tag) => (
                       <span key={tag} className="project-tag">
@@ -395,7 +420,7 @@ function App() {
                       </span>
                     ))}
                   </div>
-                  <button className="project-link" type="button" onClick={() => setActiveProject(project)}>
+                  <button className="project-link" type="button" style={{ marginTop: '1rem' }} onClick={() => setActiveProject({ type: 'academic', data: project })}>
                     Ver Detalhes
                   </button>
                 </article>
@@ -404,25 +429,59 @@ function App() {
           </div>
 
           <div className="projects-category">
-            <h3 className="project-category-heading">Pessoais</h3>
-            <div className="project-grid">
-              {personalProjects.map((project) => (
-                <article key={project.title} className="project-card">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="tag-list">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="project-tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <button className="project-link" type="button" onClick={() => setActiveProject(project)}>
-                    Ver Detalhes
-                  </button>
-                </article>
-              ))}
-            </div>
+            <h3 className="project-category-heading">Pessoais (GitHub)</h3>
+            {isLoadingGithub ? (
+              <p style={{ textAlign: 'center', opacity: 0.7, padding: '2rem 0' }}>
+                Carregando projetos do GitHub...
+              </p>
+            ) : githubProjects.length > 0 ? (
+              <div className="project-grid">
+                {githubProjects.map((project) => (
+                  <article key={project.id} className="project-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ height: '160px', overflow: 'hidden', marginBottom: '1rem', borderRadius: '4px', flexShrink: 0 }}>
+                      <img 
+                        src={project.media?.image} 
+                        alt={project.name} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <h3 style={{ textTransform: 'capitalize' }}>{project.name.replace(/-/g, ' ')}</h3>
+                    <p style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', flex: 1 }}>
+                      {project.description || "Sem descrição disponível."}
+                    </p>
+                    <button className="project-link" type="button" style={{ marginTop: '1rem' }} onClick={() => setActiveProject({ type: 'github', data: project })}>
+                      Ver Detalhes
+                    </button>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="project-grid">
+                {personalProjects.map((project) => (
+                  <article key={project.title} className="project-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ height: '160px', overflow: 'hidden', marginBottom: '1rem', borderRadius: '4px', flexShrink: 0 }}>
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <h3>{project.title}</h3>
+                    <p style={{ flex: 1 }}>{project.description}</p>
+                    <div className="tag-list">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="project-tag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <button className="project-link" type="button" style={{ marginTop: '1rem' }} onClick={() => setActiveProject({ type: 'academic', data: project })}>
+                      Ver Detalhes
+                    </button>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -507,44 +566,98 @@ function App() {
             <button className="modal-close" type="button" onClick={() => setActiveProject(null)}>
               ×
             </button>
-            <div className="project-modal-image-wrapper">
-              <img
-                className="project-modal-image"
-                src={activeProject.image}
-                alt={activeProject.title}
-              />
-            </div>
-            <div className="project-modal-body">
-              <h3>{activeProject.title}</h3>
-              <div className="project-modal-sections">
-                <div className="project-modal-section">
-                  <strong>Descrição</strong>
-                  <p>{activeProject.description}</p>
+            {activeProject.type === 'academic' ? (
+              <>
+                <div className="project-modal-image-wrapper">
+                  <img
+                    className="project-modal-image"
+                    src={activeProject.data.image}
+                    alt={activeProject.data.title}
+                  />
                 </div>
-                <div className="project-modal-section">
-                  <strong>Minha contribuição</strong>
-                  <p>{activeProject.contribution}</p>
+                <div className="project-modal-body">
+                  <h3>{activeProject.data.title}</h3>
+                  <div className="project-modal-sections">
+                    <div className="project-modal-section">
+                      <strong>Descrição</strong>
+                      <p>{activeProject.data.description}</p>
+                    </div>
+                    <div className="project-modal-section">
+                      <strong>Minha contribuição</strong>
+                      <p>{activeProject.data.contribution}</p>
+                    </div>
+                    <div className="project-modal-section">
+                      <strong>Tecnologias utilizadas</strong>
+                      <div className="modal-tech-list">
+                        {activeProject.data.tags.map((tag) => (
+                          <span key={tag} className="modal-tech-item">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    className="modal-repo-link"
+                    href={activeProject.data.repoLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    link do repositório
+                  </a>
                 </div>
-                <div className="project-modal-section">
-                  <strong>Tecnologias utilizadas</strong>
-                  <div className="modal-tech-list">
-                    {activeProject.tags.map((tag) => (
-                      <span key={tag} className="modal-tech-item">
-                        {tag}
-                      </span>
-                    ))}
+              </>
+            ) : (
+              <>
+                <div className="project-modal-image-wrapper" style={{ backgroundColor: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '16/9' }}>
+                  {activeProject.data.media?.videoUrl ? (
+                    <video 
+                      src={activeProject.data.media.videoUrl} 
+                      controls 
+                      autoPlay 
+                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                  ) : (
+                    <div style={{ color: '#fff', padding: '1rem', textAlign: 'center' }}>
+                      Nenhum vídeo demonstrativo cadastrado para este projeto.
+                    </div>
+                  )}
+                </div>
+                <div className="project-modal-body">
+                  <h3 style={{ textTransform: 'capitalize' }}>
+                    {activeProject.data.name.replace(/-/g, ' ')}
+                  </h3>
+                  <div className="project-modal-sections">
+                    <div className="project-modal-section">
+                      <strong>Descrição</strong>
+                      <p style={{ lineHeight: 1.6 }}>
+                        {activeProject.data.description || "Este projeto não possui uma descrição detalhada cadastrada."}
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+                    <a 
+                      href={activeProject.data.html_url} 
+                      target="_blank" 
+                      rel="noreferrer" 
+                      className="modal-repo-link"
+                    >
+                      Ver Repositório
+                    </a>
+                    {activeProject.data.homepage && (
+                      <a 
+                        href={activeProject.data.homepage} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="modal-repo-link"
+                      >
+                        Deploy Ativo
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
-              <a
-                className="modal-repo-link"
-                href={activeProject.repoLink}
-                target="_blank"
-                rel="noreferrer"
-              >
-                link do repositório
-              </a>
-            </div>
+              </>
+            )}
           </div>
         </div>
       )}
