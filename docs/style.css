@@ -253,7 +253,7 @@ main {
 }
 
 .section-block {
-  margin-top: 90px;
+  margin-top: 260px;
 }
 
 .section-heading span {
@@ -414,7 +414,7 @@ main {
   justify-content: center;
   min-width: 72px;
   min-height: 72px;
-  padding: 0;
+  padding: 0 24px;
   border-radius: 20px;
   background: rgba(77, 166, 255, 0.12);
   color: #eef0ff;
@@ -824,7 +824,7 @@ main {
 .certificate-image {
   width: 100%;
   height: 150px;
-  border-radius: 24px;
+  border-radius: 28px;
   background: linear-gradient(135deg, rgba(15, 16, 35, 0.95), rgba(59, 118, 217, 0.88));
   margin-bottom: 0;
 }
@@ -858,7 +858,7 @@ main {
 }
 
 .projects-category {
-  margin-top: 32px;
+  margin-top: 64px;
 }
 
 .project-category-heading {
@@ -974,12 +974,12 @@ main {
 body.light-mode {
   background: radial-gradient(circle at top left, rgba(118, 181, 255, 0.18), transparent 22%),
     radial-gradient(circle at bottom right, rgba(114, 172, 255, 0.12), transparent 24%),
-    linear-gradient(180deg, #f6f8ff 0%, #e6eeff 35%, #d6e2f7 100%);
-  color: #1c2a44;
+    linear-gradient(180deg, #eef3fb 0%, #e0eaf7 35%, #cfdef0 100%);
+  color: #1a273b;
 }
 
 body.light-mode .navbar {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(235, 242, 251, 0.88);
   border-bottom-color: rgba(13, 55, 122, 0.14);
 }
 
@@ -1013,9 +1013,20 @@ body.light-mode .skill-group-card,
 body.light-mode .timeline-card,
 body.light-mode .professional-card,
 body.light-mode .philosophy-card {
-  background: rgba(255, 255, 255, 0.82);
-  color: #1c2a44;
+  background: rgba(235, 242, 251, 0.85);
+  color: #1a273b;
   border-color: rgba(13, 55, 122, 0.12);
+}
+
+body.light-mode .hero-text p,
+body.light-mode .profile-summary p,
+body.light-mode .philosophy-card blockquote,
+body.light-mode .interest-card p,
+body.light-mode .stat-card span,
+body.light-mode .certificate-card p,
+body.light-mode .certificate-card span,
+body.light-mode .timeline-institution {
+  color: #3d5073;
 }
 
 body.light-mode .footer-bar {
@@ -1024,6 +1035,67 @@ body.light-mode .footer-bar {
 
 body.light-mode .footer-bar strong {
   color: #1c2a44;
+}
+
+/* --- Correções de contraste para o Tema Claro --- */
+
+body.light-mode .brand,
+body.light-mode .curriculum-subtitle,
+body.light-mode .project-category-heading {
+  color: #1a273b;
+}
+
+body.light-mode .skill-group-item,
+body.light-mode .project-tag,
+body.light-mode .modal-tech-item {
+  background: rgba(28, 108, 197, 0.12);
+  color: #1a273b;
+}
+
+body.light-mode .project-tag--alt {
+  background: rgba(28, 108, 197, 0.16);
+}
+
+body.light-mode .value-cards span {
+  background: rgba(28, 108, 197, 0.08);
+  color: #1a273b;
+  border-color: rgba(13, 55, 122, 0.12);
+}
+
+body.light-mode .project-link {
+  color: #1c6cc5;
+}
+
+body.light-mode .project-modal {
+  background: #eef3fb;
+  border-color: rgba(13, 55, 122, 0.12);
+  color: #1a273b;
+}
+
+body.light-mode .project-modal-section strong {
+  color: #1c6cc5;
+}
+
+body.light-mode .project-modal-section p {
+  color: #3d5073;
+}
+
+body.light-mode .modal-close {
+  background: rgba(255, 255, 255, 0.6);
+  color: #1a273b;
+  border-color: rgba(13, 55, 122, 0.2);
+}
+
+body.light-mode .modal-repo-link {
+  background: rgba(28, 108, 197, 0.12);
+  color: #1a273b;
+  border-color: rgba(13, 55, 122, 0.2);
+}
+
+body.light-mode .certificate-link {
+  background: rgba(28, 108, 197, 0.12);
+  color: #1c6cc5;
+  border-color: rgba(28, 108, 197, 0.2);
 }
 
 @media (max-width: 1080px) {

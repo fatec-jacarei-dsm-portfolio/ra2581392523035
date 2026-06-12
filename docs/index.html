@@ -4,10 +4,350 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfólio Felipe</title>
-    <script type="module" crossorigin src="/ra2581392523035/assets/index-BoicqIyF.js"></script>
-    <link rel="stylesheet" crossorigin href="/ra2581392523035/assets/index-Cli1WHXn.css">
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      /* Oculta a barra de rolagem visual do modal (mantendo a funcionalidade de rolagem por mouse/touch) */
+      .project-modal::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      .project-modal {
+        scrollbar-width: none; /* Firefox */
+      }
+      /* Ajuste extra para a seção de contatos */
+      .contact-icons--row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="app-shell dark" id="app-shell">
+      <header class="navbar">
+        <div class="brand">
+          <span class="brand-name">Felipe</span>
+          <span class="brand-dot"></span>
+        </div>
+        <nav class="nav-links">
+          <a href="#inicio">Início</a>
+          <a href="#curriculo">Currículo</a>
+          <a href="#profissional">Profissional</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#certificados">Certificados</a>
+          <a href="#interesses">Interesses</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <button class="theme-button" type="button" id="theme-btn" aria-label="Alternar tema">☀️</button>
+      </header>
+
+      <main>
+        <section id="inicio" class="hero-section">
+          <div class="hero-text">
+            <h1>Felipe Faria Machado</h1>
+            <div class="hero-actions">
+              <a class="button-primary" href="#projetos">Ver Projetos</a>
+              <a class="button-secondary" href="#curriculo">Meu Currículo</a>
+            </div>
+          </div>
+          <div class="hero-image-card">
+            <div class="avatar-ring">
+              <img class="avatar-image" src="./assets/foto.jpg" alt="Foto de Felipe" />
+            </div>
+          </div>
+        </section>
+
+        <section id="curriculo" class="section-block curriculum-section">
+          <div class="section-heading">
+            <span>Currículo</span>
+            <h2>Minha formação acadêmica, experiência profissional e habilidades técnicas</h2>
+          </div>
+          <div class="curriculum-grid">
+            <div class="timeline-panel">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <span class="timeline-period">2025 - 2028 (cursando)</span>
+                <h3>Tecnólogo em Desenvolvimento de Software Multiplataforma</h3>
+                <p class="timeline-institution">Fatec Jacareí</p>
+                <p>Formação tecnológica focada em desenvolvimento de software multiplataforma, arquitetura de sistemas e práticas ágeis.</p>
+              </div>
+              <div class="timeline-card">
+                <span class="timeline-period">2024 - 2025</span>
+                <h3>Técnico em Desenvolvimento de Sistemas</h3>
+                <p class="timeline-institution">ETEC São José dos Campos</p>
+                <p>Formação técnica com foco em programação, banco de dados e desenvolvimento web.</p>
+              </div>
+            </div>
+          </div>
+          <div class="curriculum-subtitle">Habilidades</div>
+          <div class="skill-groups-row">
+            <div class="skill-group-card skill-group-card--wide">
+              <h3>Frontend</h3>
+              <div class="skill-group-list skill-group-list--horizontal">
+                <span class="skill-group-item">⚛️ React</span>
+                <span class="skill-group-item">📘 TypeScript</span>
+                <span class="skill-group-item">🟨 JavaScript</span>
+                <span class="skill-group-item">🌐 HTML</span>
+                <span class="skill-group-item">🎨 CSS</span>
+              </div>
+            </div>
+            <div class="skill-group-card skill-group-card--wide">
+              <h3>Backend</h3>
+              <div class="skill-group-list skill-group-list--horizontal">
+                <span class="skill-group-item">🟩 Node.js</span>
+                <span class="skill-group-item">🐍 Python</span>
+                <span class="skill-group-item">🐬 SQL</span>
+                <span class="skill-group-item">🐘 PHP</span>
+              </div>
+            </div>
+            <div class="skill-group-card skill-group-card--wide">
+              <h3>Tools</h3>
+              <div class="skill-group-list skill-group-list--horizontal">
+                <span class="skill-group-item">🛠️ Git</span>
+                <span class="skill-group-item">🖌️ Figma</span>
+                <span class="skill-group-item">📋 Trello</span>
+              </div>
+            </div>
+            <div class="skill-group-card skill-group-card--wide">
+              <h3>Soft Skills</h3>
+              <div class="skill-group-list skill-group-list--horizontal">
+                <span class="skill-group-item">Comunicação</span>
+                <span class="skill-group-item">Trabalho em Equipe</span>
+                <span class="skill-group-item">Resolução de Problemas</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="profissional" class="section-block professional-section">
+          <div class="section-heading">
+            <span>Profissional</span>
+            <h2>Minha trajetória profissional e contribuições</h2>
+          </div>
+          <div class="professional-card">
+            <div class="profile-summary">
+              <div class="profile-thumb">
+                <div class="thumb-image">
+                  <img src="./assets/foto.jpg" alt="Foto de Felipe" />
+                </div>
+              </div>
+              <div>
+                <h3>Desenvolvedor</h3>
+                <p>Sou um profissional dedicado ao desenvolvimento web, com foco em criar experiências digitais memoráveis e funcionais. Atualmente busco minha primeira oportunidade na área de desenvolvimento de software.</p>
+                <div class="profile-meta">
+                  <span>📍 São José dos Campos, Brasil</span>
+                  <!-- E-mail removido propositalmente para cumprir os requisitos -->
+                </div>
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card"><strong>0</strong><span>Anos de experiência</span></div>
+              <div class="stat-card"><strong>3</strong><span>Projetos concluídos</span></div>
+              <div class="stat-card"><strong>8+</strong><span>Tecnologias</span></div>
+              <div class="stat-card"><strong>100%</strong><span>Comprometimento</span></div>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <h3>Minha Filosofia</h3>
+            <blockquote>“A tecnologia deve ser uma extensão da criatividade humana, não uma barreira. Cada linha de código é uma oportunidade de criar algo que faça a diferença na vida das pessoas.”</blockquote>
+            <div class="value-cards">
+              <span>Foco em Resultados</span>
+              <span>Melhoria Contínua</span>
+              <span>Colaboração</span>
+              <span>Inovação</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="projetos" class="section-block projects-section">
+          <div class="section-heading">
+            <span>Projetos</span>
+            <h2>Projetos acadêmicos, profissionais e pessoais</h2>
+          </div>
+
+          <div class="projects-category">
+            <h3 class="project-category-heading">Acadêmicos</h3>
+            <div class="project-grid">
+              <article class="project-card" style="display: flex; flex-direction: column;" data-title="ABP FATEC 1 – AgriRS-Lab" data-desc="Projeto desenvolvido no 1º semestre do curso de Desenvolvimento de Software Multiplataforma. Site para o laboratório de sensoriamento remoto agrícola do INPE." data-contrib="Desenvolvi a interface e as páginas do laboratório, garantindo navegação clara e responsiva, também desenvolvi as rotas, controles e sistema de tradução." data-tags="HTML,CSS,JavaScript" data-img="./assets/agriRSLab.png" data-link="https://github.com/404NotFound-ABP/AgriRSLAB_Portal">
+                <div style="height: 160px; overflow: hidden; margin-bottom: 1rem; border-radius: 4px; flex-shrink: 0;"><img src="./assets/agriRSLab.png" alt="AgriRS-Lab" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <h3>ABP FATEC 1 – AgriRS-Lab</h3>
+                <p style="flex: 1;">Projeto desenvolvido no 1º semestre do curso de Desenvolvimento de Software Multiplataforma. Site para o laboratório do INPE.</p>
+                <div class="tag-list">
+                  <span class="project-tag">1DSM – 2º Sem. 2025</span>
+                  <span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span>
+                </div>
+                <button class="project-link" type="button" style="margin-top: 1rem;">Ver Detalhes</button>
+              </article>
+
+              <article class="project-card" style="display: flex; flex-direction: column;" data-title="ABP FATEC 2 – FAQtec" data-desc="Projeto integrador do 2º período focado na criação de um chat-bot para a secretaria da Fatec Jacareí." data-contrib="Exerci o papel de Scrum Master. Desenvolvendo a documentação e planejamento da equipe de desenvolvimento do produto." data-tags="JavaScript,TypeScript,React" data-img="./assets/faqtec.png" data-link="https://github.com/404NotFound-ABP/Autoatendimento_Academico">
+                <div style="height: 160px; overflow: hidden; margin-bottom: 1rem; border-radius: 4px; flex-shrink: 0;"><img src="./assets/faqtec.png" alt="FAQtec" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <h3>ABP FATEC 2 – FAQtec</h3>
+                <p style="flex: 1;">Projeto integrador do 2º período focado na criação de um chat-bot para a secretaria da Fatec Jacareí.</p>
+                <div class="tag-list">
+                  <span class="project-tag">2DSM – 1º Sem. 2026</span>
+                  <span class="project-tag">JavaScript</span><span class="project-tag">TypeScript</span>
+                </div>
+                <button class="project-link" type="button" style="margin-top: 1rem;">Ver Detalhes</button>
+              </article>
+            </div>
+          </div>
+
+          <div class="projects-category">
+            <h3 class="project-category-heading">Profissionais</h3>
+            <div class="project-grid">
+               <p style="opacity: 0.7; grid-column: 1 / -1;">Nenhum projeto profissional adicionado no momento. Em busca da primeira oportunidade de trabalho.</p>
+            </div>
+          </div>
+
+          <div class="projects-category">
+            <h3 class="project-category-heading">Pessoais</h3>
+            <div class="project-grid">
+              <article class="project-card" style="display: flex; flex-direction: column;" data-title="TCC ETEC – PetNexus" data-desc="Sistema web para gestão de pet shop e clínica veterinária com agendamento, controle de estoque e relatórios." data-contrib="Implementei formulários de registro e dashboard de controle, com foco na experiência do cliente e organização de dados." data-tags="JavaScript,PHP,SCSS" data-img="" data-link="https://github.com/felipefmac/petnexus">
+                <div style="height: 160px; overflow: hidden; margin-bottom: 1rem; border-radius: 4px; flex-shrink: 0; background: #0A1426; display: flex; align-items: center; justify-content: center;"><span style="color: #4DA6FF; font-size: 24px; font-weight: bold;">PetNexus</span></div>
+                <h3>TCC ETEC – PetNexus</h3>
+                <p style="flex: 1;">Sistema web para gestão de pet shop e clínica veterinária com agendamento, controle de estoque e relatórios.</p>
+                <button class="project-link" type="button" style="margin-top: 1rem;">Ver Detalhes</button>
+              </article>
+
+              <article class="project-card" style="display: flex; flex-direction: column;" data-title="Portfólio ETEC" data-desc="Portfólio desenvolvido durante o curso Técnico em Desenvolvimento de Sistemas na ETEC São José dos Campos." data-contrib="Projetei uma estrutura visual limpa e organizei projetos para destacar as entregas do período." data-tags="HTML,CSS,JavaScript" data-img="./assets/portfolio_etec.png" data-link="https://sites.google.com/view/joopedroluvisariseveriano1/p%C3%A1gina-inicial?authuser=1">
+                <div style="height: 160px; overflow: hidden; margin-bottom: 1rem; border-radius: 4px; flex-shrink: 0; background: #0A1426; display: flex; align-items: center; justify-content: center;"><img src="./assets/portfolio_etec.png" alt="Portfólio ETEC" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+                <h3>Portfólio ETEC</h3>
+                <p style="flex: 1;">Portfólio desenvolvido durante o curso Técnico em Desenvolvimento de Sistemas na ETEC São José dos Campos.</p>
+                <button class="project-link" type="button" style="margin-top: 1rem;">Ver Detalhes</button>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="certificados" class="section-block certificates-section">
+          <div class="section-heading">
+            <span>Certificações</span>
+            <h2>Cursos e conquistas acadêmicas</h2>
+          </div>
+
+          <div class="certificates-grid">
+            <div class="certificate-card">
+              <div class="certificate-image"><img src="./assets/Cisco_Packet_Tracer.jpg" alt="Cisco Packet Tracer" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+              <div>
+                <h3>Começando com o Cisco Packet Tracer</h3>
+                <p>Cisco Networking Academy</p>
+                <span>2025</span>
+              </div>
+              <a href="./assets/Cisco_Packet_Tracer.pdf" target="_blank" rel="noreferrer" class="certificate-link">Ver Certificado</a>
+            </div>
+
+            <div class="certificate-card">
+              <div class="certificate-image"><img src="./assets/Linux_Unhatched.jpg" alt="Linux Unhatched" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+              <div>
+                <h3>Linux Unhatched</h3>
+                <p>Cisco Networking Academy</p>
+                <span>2025</span>
+              </div>
+              <a href="./assets/Linux_Unhatched.pdf" target="_blank" rel="noreferrer" class="certificate-link">Ver Certificado</a>
+            </div>
+
+            <div class="certificate-card">
+              <div class="certificate-image"><img src="./assets/Ameacas_Ciberneticas.jpg" alt="Gerenciamento de Ameaças Cibernéticas" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div>
+                <h3>Gerenciamento de Ameaças Cibernéticas</h3>
+                <p>Cisco Networking Academy</p>
+                <span>2025</span>
+              </div>
+              <a href="./assets/Ameacas_Ciberneticas.pdf" target="_blank" rel="noreferrer" class="certificate-link">Ver Certificado</a>
+            </div>
+
+            <div class="certificate-card">
+              <div class="certificate-image"><img src="./assets/Introducao_Ciberseguranca.jpg" alt="Introdução à Cibersegurança" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+              <div>
+                <h3>Introdução à Cibersegurança</h3>
+                <p>Cisco Networking Academy</p>
+                <span>2025</span>
+              </div>
+              <a href="./assets/Introducao_Ciberseguranca.pdf" target="_blank" rel="noreferrer" class="certificate-link">Ver Certificado</a>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="interesses" class="section-block interests-section">
+          <div class="section-heading">
+            <span>Interesses</span>
+            <h2>Hobbies e interesses pessoais</h2>
+          </div>
+          <div class="interests-grid">
+            <div class="interest-card">
+              <h3><span class="interest-icon">🎵</span> Música</h3>
+              <p>Gosto de ouvir músicas de diversos gêneros.</p>
+              <div class="tag-list"><span class="project-tag project-tag--alt">Sertanejo</span><span class="project-tag project-tag--alt">Pagode</span><span class="project-tag project-tag--alt">Reggae</span></div>
+            </div>
+            <div class="interest-card">
+              <h3><span class="interest-icon">🎮</span> Games</h3>
+              <p>Gosto de jogar (Prefiro RPG).</p>
+              <div class="tag-list"><span class="project-tag project-tag--alt">RPG</span><span class="project-tag project-tag--alt">Corrida</span><span class="project-tag project-tag--alt">Estratégia</span></div>
+            </div>
+            <div class="interest-card">
+              <h3><span class="interest-icon">📚</span> Leitura</h3>
+              <p>Gosto de ler.</p>
+              <div class="tag-list"><span class="project-tag project-tag--alt">Ficção</span><span class="project-tag project-tag--alt">Aventura</span><span class="project-tag project-tag--alt">Históricos</span></div>
+            </div>
+            <div class="interest-card">
+              <h3><span class="interest-icon">🎬</span> Filmes</h3>
+              <p>Gosto de assistir filmes.</p>
+              <div class="tag-list"><span class="project-tag project-tag--alt">Sci-Fi</span><span class="project-tag project-tag--alt">Viagem no Tempo</span><span class="project-tag project-tag--alt">Espacial</span></div>
+            </div>
+            <div class="interest-card">
+              <h3><span class="interest-icon">✈️</span> Viajar</h3>
+              <p>Gosto de viajar.</p>
+              <div class="tag-list"><span class="project-tag project-tag--alt">Explorar</span><span class="project-tag project-tag--alt">Cultura</span><span class="project-tag project-tag--alt">Paisagens</span></div>
+            </div>
+            <div class="interest-card">
+              <h3><span class="interest-icon">⚽</span> Esportes</h3>
+              <p>Gosto de acompanhar esportes.</p>
+              <div class="tag-list"><span class="project-tag project-tag--alt">Futebol</span><span class="project-tag project-tag--alt">Futebol Americano</span><span class="project-tag project-tag--alt">Basquete</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contato" class="section-block contact-section">
+          <div class="section-heading">
+            <span>Contato</span>
+            <h2>Redes Profissionais</h2>
+          </div>
+          <div class="contact-grid" style="text-align: center;">
+            <div class="contact-icons-panel">
+              <div class="contact-icons contact-icons--row">
+                <a class="button-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;" href="https://github.com/felipefmac" target="_blank" rel="noreferrer" aria-label="GitHub">💻 GitHub</a>
+                <a class="button-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;" href="https://www.linkedin.com/in/felipefariamachado" target="_blank" rel="noreferrer" aria-label="LinkedIn">💼 LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="modal-overlay" id="modal" style="display: none;">
+        <div class="project-modal" id="modal-content">
+          <button class="modal-close" type="button" id="modal-close">×</button>
+          <div class="project-modal-image-wrapper">
+            <img class="project-modal-image" id="m-img" src="" alt="" />
+          </div>
+          <div class="project-modal-body">
+            <h3 id="m-title"></h3>
+            <div class="project-modal-sections">
+              <div class="project-modal-section"><strong>Descrição</strong><p id="m-desc"></p></div>
+              <div class="project-modal-section"><strong>Minha contribuição</strong><p id="m-cont"></p></div>
+              <div class="project-modal-section"><strong>Tecnologias utilizadas</strong><div class="modal-tech-list" id="m-tech-list"></div></div>
+            </div>
+            <a class="modal-repo-link" id="m-link" href="#" target="_blank" rel="noreferrer">Ver Repositório</a>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer-bar">
+        <span>© 2026 Felipe Faria Machado. Todos os direitos reservados.</span>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>
